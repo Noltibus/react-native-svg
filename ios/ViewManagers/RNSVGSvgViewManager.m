@@ -81,9 +81,9 @@ RCT_CUSTOM_VIEW_PROPERTY(color, id, RNSVGSvgView)
     }];
 }
 
-+ (NSString *)toInternalStorage:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
+- (NSString *)toInternalStorage:(RNSVGSvgView *)view withName:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
 {
-    return [svg toInternalStorage:@"Test" backgroundColor:@"FFFFFF" width:512 height:512];
+    return [view toInternalStorage:@"Test" withBackgroundColor:@"FFFFFF" withWidth:512 withHeight:512];
 }
 
 RCT_EXPORT_METHOD(toDataURL:(nonnull NSNumber *)reactTag options:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback)
@@ -91,9 +91,14 @@ RCT_EXPORT_METHOD(toDataURL:(nonnull NSNumber *)reactTag options:(NSDictionary *
     [self toDataURL:reactTag options:options callback:callback attempt:0];
 }
 
-RCT_EXPORT_METHOD(toInternalStorage:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(toInternalStorage:(nonnull NSNumber *)reactTag withName:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height callback:(RCTResponseSenderBlock)callback)
 {
-    callback(@[[self toInternalStorage:name backgroundColor:backgroundColor widht:width height:heigth]]);
+    [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
+        __kindof UIView *view = viewRegistry[reactTag];
+        RNSVGSvgView *svg = view;
+        callback(@[[self toInternalStorage:svg withName:name withBackgroundColor:backgroundColor withWidth:width withHeight:height]]);
+    }];
+    
 }
 
 @end
