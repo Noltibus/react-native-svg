@@ -266,7 +266,7 @@
     return base64;
 }
 
-- (NSString *)toInternalStorage:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
++ (NSString *)toInternalStorage:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
 {
 
     return @"Hallo";
