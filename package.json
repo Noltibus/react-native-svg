@@ -60,7 +60,10 @@
   },
   "dependencies": {
     "css-select": "^2.1.0",
-    "css-tree": "^1.0.0-alpha.39"
+    "css-tree": "^1.0.0-alpha.39",
+    "react-native-navigation": "^7.8.1",
+    "react": "16.9.0",
+    "react-native": "0.61.5"
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.9.7",

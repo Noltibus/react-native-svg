@@ -266,6 +266,46 @@
     return base64;
 }
 
+- (NSString *)toInternalStorage:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
+{
+
+    return @"Hallo";
+    
+    
+/*
+ NSInteger w1 = [super getWidth];
+ NSInteger h1 = [super getHeight];
+ 
+ [super size]
+ [self invalidate];
+ 
+ [self draw]
+ SvgView.this.onSizeChanged(width, height, w1, h1);
+
+ Bitmap bitmap = Bitmap.createBitmap(width, height,
+         Bitmap.Config.ARGB_8888);
+
+ Log.v("SvgView", "createBitmap in toInternalStorage");
+ int c = Color.parseColor(backgroundColor);
+
+ bitmap.eraseColor(c);
+
+SvgView.this.clearChildCache();
+ SvgView.this.invalidate();
+
+ SvgView.this.setMeasuredDimension(width, height);
+
+ SvgView.this.drawChildren(new Canvas(bitmap));
+
+ImageUtil.INSTANCE.getBitmaps().put(name, bitmap);
+
+ SvgView.this.onSizeChanged(w1, h1, width, height);
+SvgView.this.clearChildCache();
+ */
+    
+
+    }
+
 - (NSString *)getDataURLwithBounds:(CGRect)bounds
 {
     UIGraphicsBeginImageContextWithOptions(bounds.size, NO, 1);
