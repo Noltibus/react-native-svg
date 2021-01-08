@@ -81,24 +81,9 @@ RCT_CUSTOM_VIEW_PROPERTY(color, id, RNSVGSvgView)
     }];
 }
 
-- (NSString *)toInternalStorage:(RNSVGSvgView *)view withName:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height
-{
-    return [view toInternalStorage:@"Test" withBackgroundColor:@"FFFFFF" withWidth:512 withHeight:512];
-}
-
 RCT_EXPORT_METHOD(toDataURL:(nonnull NSNumber *)reactTag options:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback)
 {
     [self toDataURL:reactTag options:options callback:callback attempt:0];
-}
-
-RCT_EXPORT_METHOD(toInternalStorage:(nonnull NSNumber *)reactTag withName:(NSString *)name withBackgroundColor:(NSString *)backgroundColor withWidth:(NSInteger)width withHeight:(NSInteger)height callback:(RCTResponseSenderBlock)callback)
-{
-    [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
-        __kindof UIView *view = viewRegistry[reactTag];
-        RNSVGSvgView *svg = view;
-        callback(@[[self toInternalStorage:svg withName:name withBackgroundColor:backgroundColor withWidth:width withHeight:height]]);
-    }];
-    
 }
 
 @end
